@@ -14,12 +14,9 @@ def calculate_average(numbers):
     try:
         sum_chisel, k = personal_sum(numbers)
         try:
-            if sum_chisel != 0:
-                return sum_chisel / (len(numbers) - k)
-            else:
-                return 0
+            return sum_chisel / (len(numbers) - k)
         except ZeroDivisionError:
-            return None
+            return 0
     except TypeError:
         print('В numbers записан некорректный тип данных')
 
