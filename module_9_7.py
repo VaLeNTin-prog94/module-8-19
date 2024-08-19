@@ -2,11 +2,12 @@ def is_prime(func):
     def wrapper(*args):
         result = func(*args)
         d = 2
+        t=True
         while d * d <= result:
             if result % d == 0:
-                print("Составное")
+                t=False
             d += 1
-        print("Простое")
+        print('Простое') if t else print('Составное')
         return result
 
     return wrapper
