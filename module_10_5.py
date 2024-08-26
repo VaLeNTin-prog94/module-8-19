@@ -16,8 +16,8 @@ if __name__ == '__main__':
         read_info(s)
     time_end = datetime.now()
     print(time_end - time_start)
+    time_start = datetime.now()
     with multiprocessing.Pool(processes=4) as pool:
-        time_start = datetime.now()
         pool.map(read_info, filenames)
     time_end = datetime.now()
     print(time_end - time_start)
