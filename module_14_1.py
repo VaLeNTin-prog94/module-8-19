@@ -11,11 +11,12 @@ with sqlite3.connect('not_telegram.db') as db:
     balance  INTEGER NOT NULL
     )
     ''')
-    for i in range(1, 11):
-        cursor.execute(" INSERT INTO Users(username,email,age,balance) VALUES(?,?,?,?)",
-                       (f"User{i}", f"example1{i}@gmail.com", f"{i * 10}", "1000"))
+    # for i in range(1, 11):
+    #     cursor.execute(" INSERT INTO Users(username,email,age,balance) VALUES(?,?,?,?)",
+    #                    (f"User{i}", f"example1{i}@gmail.com", f"{i * 10}", "1000"))
     cursor.execute("UPDATE Users Set balance=?  Where id%2==0", (500,))
     for id_delete in [i for i in range(1, 11, 3)]:
         cursor.execute("DELETE FROM Users  Where id=?", (id_delete,))
 for user in cursor.execute("SELECT username,email,age,balance FROM Users Where age!=60").fetchall():
-    print(user)
+    print("Имя:",user[0],"| Почта:",user[1],"| Возраст",user[2],"| Баланс:",user[3])
+
